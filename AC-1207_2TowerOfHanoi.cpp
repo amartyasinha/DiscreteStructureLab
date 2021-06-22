@@ -1,20 +1,20 @@
 #include<iostream>
 using namespace std;
 
-void Tower_of_Hanoi(int n,string left,string centre,string right) {
+void TowerOfHanoi(int n, string l, string c, string r) {
     if(n==1) {
-        cout<<"Move the disk 1 from "<<left<<" rod to "<<right<<" rod"<<endl;
+        cout << "Move Disk 1 from " << l << " Rod to " << r << " Rod." << endl;
     } else {
-        Tower_of_Hanoi(n-1,left,right,centre);
-        cout<<"Move disk "<<n<<" from "<<left<<" rod to "<<right<<" rod"<<endl;
-        Tower_of_Hanoi(n-1,centre,left,right);
+        TowerOfHanoi(n-1, l, r, c);
+        cout << "Move Disk " << n << " from " << l << " Rod to " << r << " Rod." << endl;
+        TowerOfHanoi(n-1, c, l, r);
     }
 }
 
 int main() {
-    int n,x;
-    cout<<"\nEnter number of disk: ";
+    int n;
+    cout<<"Enter number of disk: ";
     cin>>n;
-    Tower_of_Hanoi(n,"left","centre","right");
+    TowerOfHanoi(n,"left","centre","right");
     return 0;
 }
