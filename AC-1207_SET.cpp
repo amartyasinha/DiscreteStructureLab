@@ -1,33 +1,38 @@
 #include <iostream>
 #include <algorithm>
-#include <array>
-#include <cmath>
 using namespace std;
 
 class SET{
 public:
-    void subset1(int size1, int set1[]){
-        int i = 0, j = 0;
-        int count = pow(2, size1);
-        for(i = 0; i<count; i++){
-            for(j = 0; j<size1; j++){
-                if((i&(1<<j))!=0)
-                cout<<set1[j]<<" ";
+    void subset(int size1, int size2, int set1[], int set2[]){
+        int s = 0;
+        for (int i = 0; i < size1; i++){
+            for (int j = 0; j < size2; j++){
+                if (set1[i] == set2[j]){
+                    s++;
+                    break;
+                }
             }
-            cout<<endl;
         }
-    }
+        if (s == size1)
+            cout << "\n Set A is the Subset of set B";
+        else
+            cout << "\n Set A is not the Subset of set B";
 
-    void subset2(int size2, int set2[]){
-        int i = 0, j = 0;
-        int count = pow(2, size2);
-        for(i = 0; i<count; i++){
-            for(j = 0; j<size2; j++){
-                if((i&(1<<j))!=0)
-                cout<<set2[j]<<" ";
+        s = 0;
+
+        for (int i = 0; i < size1; i++){
+            for (int j = 0; j < size2; j++){
+                if (set1[i] == set2[j]){
+                    s++;
+                    break;
+                }
             }
-            cout<<endl;
         }
+        if (s == size2)
+            cout << "\n Set B is the Subset of set A";
+        else
+            cout << "\n Set B is not the Subset of set A";
     }
 
     void setunion(int size1, int size2, int set1[], int set2[]){
@@ -110,8 +115,8 @@ public:
 
     void setDifference(int size1, int size2, int set1[], int set2[]){
         int i = 0, j = 0;
-
         int c=0;
+
         for(i=0;i<size1;i++)
         {
             c=0;
@@ -206,15 +211,12 @@ int main(){
         cin>>choice;
         switch(choice){
             case 1:
-                cout<<"\nThe subsets of Set A are: ";
-                sets.subset1(size1, set1);
-                cout<<"\nThe subsets of Set B are: ";
-                sets.subset1(size2, set2);
+                sets.subset(size1, size2, set1, set2);
                 break;
 
             case 2:
                 cout<<"\nThe Union of the given sets is: ";
-                sets.setunion(size1,size2, set1, set2);
+                sets.setunion(size1, size2, set1, set2);
                 break;
 
             case 3:
@@ -244,6 +246,7 @@ int main(){
         }
         cout<<"\nDo you want to return to main menu? Y/N  ";
         cin>>repeat;
-    }while(repeat == 'Y' || repeat == 'y');
+    } while(repeat == 'Y' || repeat == 'y');
+
     return 0;
 }
