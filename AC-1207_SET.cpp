@@ -87,33 +87,26 @@ public:
         for(int i =0;i<sizeU;i++)
         {
             c=0;
-            for(int j=0;j<size1;j++)
-            {
+            for(int j=0;j<size1;j++){
                 if (universal[i]==set1[j])
                     c++;
             }
             if(c==0)
-            {
                 cout<<universal[i]<<" ";
-            }
         }
         cout<<"\nTHE COMPLIMENT OF SET B\n";
-        for(int i =0;i<sizeU;i++)
-        {
+        for(int i =0;i<sizeU;i++){
             c=0;
-            for(int j=0;j<size2;j++)
-            {
+            for(int j=0;j<size2;j++){
                 if (universal[i]==set2[j])
                     c++;
             }
             if(c==0)
-            {
                 cout<<universal[i]<<" ";
-            }
         }
     }
 
-    void setDifference(int size1, int size2, int set1[], int set2[]){
+    void setDifferenceA(int size1, int size2, int *set1, int *set2){
         int i = 0, j = 0;
         int c=0;
 
@@ -131,6 +124,26 @@ public:
             }
         }
         
+    }
+
+    void setDifferenceB(int size1, int size2, int set1[], int set2[]){
+        int i = 0, j = 0;
+        int c=0;
+
+        for(i=0;i<size2;i++)
+        {
+            c=0;
+            for(j=0;j<size1;j++)
+            {
+                if(set2[i]==set1[j])
+                    c++;
+            }
+            if(c==0)
+            {
+                cout<<set2[i]<<" ";
+            }
+        }
+
     }
 
     void symmetricDifference(int size1, int size2, int set1[], int set2[]){
@@ -206,7 +219,7 @@ int main(){
     char repeat;
     do{
         cout<<"\nSelect which Set Operation you want to perform:\n1. Subset\n2. Union\n3.Intersection\n4. Complement\n";
-        cout<<"5. A-B\n6. Symmetric Diffecence\n7. Cartesian Product";
+        cout<<"5. A-B\n6. B-A\n7. Symmetric Diffecence\n8. Cartesian Product";
         cout<<"\nEnter you choice: ";
         cin>>choice;
         switch(choice){
@@ -230,14 +243,18 @@ int main(){
 
             case 5:
                 cout<<"\n\nThe Difference of both sets A-B: ";
-                sets.setDifference(size1, size2, set1, set2);
+                sets.setDifferenceA(size1, size2, set1, set2);
                 break;
 
             case 6:
-                sets.symmetricDifference(size1, size2, set1, set2);
+                sets.setDifferenceB(size1, size2, set1, set2);
                 break;
 
             case 7:
+                sets.symmetricDifference(size1, size2, set1, set2);
+                break;
+
+            case 8:
                 sets.cartesianProduct(size1, size2, set1, set2);
                 break;
 
