@@ -2,7 +2,7 @@
 // Created by amartya on 28/07/21.
 //
 
-#include<iostream>
+#include "iostream"
 using namespace std;
 
 int comb(int n ,int r) {
@@ -15,12 +15,12 @@ int comb(int n ,int r) {
 int main() {
     int n ,r;
     cout<<"\nx1+x2+x3+---+xn=c";
-    cout<<"\nEnter the no of variables (n) : ";
+    cout<<"\nEnter the no of variables: ";
     cin>>n;
 
     cout<<"\nEnter the value of total sum (c<=10) : ";
     cin>>r;
 
-    cout<<"\nNUMBER OF POSSIBLE SOLUTIONS OF THE GIVEN EQUATION IS : ";
+    cout<<"\nTotal number of possible solutions of the given Equation is ";
     cout<<comb(n+r-1,r);
 }
